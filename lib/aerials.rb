@@ -6,7 +6,7 @@ class Aerials
   end
 
   def self.create_json_rails(struct, exclude: [:action, :controller, :key])
-    self.create_json(struct, exclude)
+    self.create_json(struct, exclude: exclude)
   end
 
   def self.create_json(struct, exclude: [])

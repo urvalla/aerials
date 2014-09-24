@@ -63,5 +63,12 @@ describe Aerials do
       struct = {'b' => 'c', 'c' => 'z', 'a' => 'g', 'd' => 'e'}
       expect(Aerials.create_json struct, exclude: ['c', 'd']).to eq "{'a':'g','b':'c'}"
     end
+
+    it 'excludes controller & action for Rails' do
+      struct = { action: 'action',
+                 controller: 'controller',
+                 data: 'some data'}
+      expect(Aerials.create_json_rails struct).to eq "{'data':'some data'}"
+    end
   end
 end

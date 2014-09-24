@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["urvala@gmail.com"]
   spec.summary       = %q{Sorted json generator. Use it for hash signing.}
   spec.description   = %q{Sorted json generator. Use it for hash signing.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/appelsin/aerials"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
