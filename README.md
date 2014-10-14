@@ -44,7 +44,7 @@ You can exclude fields:
 
     Aerials.create_json(struct, exclude: [:controller])
     
-Or use with default for Rails exclusion:
+Or use default Rails exclusion:
     
     Aerials.create_json_rails struct
     # equals to:
