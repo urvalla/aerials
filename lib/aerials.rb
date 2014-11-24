@@ -13,10 +13,10 @@ class Aerials
     if struct.is_a? Hash
       struct = struct.clone
       exclude.each { |key| struct.delete(key) }
-      struct = struct.sort
+      struct = struct.sort rescue struct
       "{#{ struct.map{|elem| "#{to_val elem[0]}:#{to_val elem[1]}"}.join(',') }}"
     elsif struct.is_a? Array
-      struct = struct.clone.sort
+      struct = struct.clone.map!{|el| el.is_a?(Symbol)? el.to_s : el }.sort
       "[#{ struct.map{|elem| to_val elem }.join(',') }]"
     elsif struct.respond_to? :to_s
       struct.to_s
@@ -31,9 +31,9 @@ class Aerials
     if elem.is_a?(Hash) || elem.is_a?(Array)
       self.create_json(elem)
     elsif elem.is_a?(String)
-      "'#{ elem.to_s.gsub("'","\\'") }'"
+      "\"#{ elem.to_s.gsub('"','\"') }\""
     else
-      "'#{ elem.to_s }'"
+      "\"#{ elem.to_s }\""
     end
   end
 end

@@ -20,8 +20,8 @@ Or install it yourself as:
 
 ### JSON generation rules:
 - No extra spaces
-- Always use quotes for both fields and non-array/hash values ('')
-- Always replace quotes with '\
+- Always use double quotes for keys and array/hash values ("")
+- Always add slashes to double quotes (replace " with \")
 - Always use UTF8 (TODO)
 - Always sort by keys on each level (arrays should be sorted by values)
 - Always sort as strings
@@ -36,16 +36,16 @@ Or install it yourself as:
         a: 2,
     }
     Aerials.create_json struct
-    
-    # will return
-    # "{'a':'2','array':['1','2'],'hash':{'a':'1'}}"
-    
+
+    # will eq
+    # '{"a":"2","array":["1","2"],"hash":{"a":"1"}}'
+
 You can exclude fields:
 
     Aerials.create_json(struct, exclude: [:controller])
-    
+
 Or use default Rails exclusion:
-    
+
     Aerials.create_json_rails struct
     # equals to:
     Aerials.create_json struct, exclude: [:action, :controller, :key]
